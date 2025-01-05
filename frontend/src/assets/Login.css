@@ -1,0 +1,206 @@
+/* Basis login container styling */
+.login-container {
+  max-width: 600px;
+  margin: 50px auto 0;
+  padding: 50px;
+  background-color: #f4f7fc;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Login titel */
+.login-container h1 {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+/* Formulier groepen */
+.form-group {
+  margin-bottom: 30px;
+}
+
+/* Label styling */
+label {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Inputvelden voor email en wachtwoord */
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1.2rem;
+  box-sizing: border-box;
+}
+
+/* Focus styling voor inputvelden */
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+/* Submit button styling */
+.login-container button {
+  width: 100%;
+  padding: 18px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Hover effect voor de submit button */
+.login-container button:hover {
+  background-color: #45a049;
+}
+
+/* Foutmelding styling */
+.error {
+  margin-top: 25px;
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+/* Register link styling */
+.register-link {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.register-link p {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.register-link a {
+  color: #4caf50;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsieve stijlen */
+
+/* Mobiel (kleine schermen) */
+@media (max-width: 600px) {
+  .login-container {
+    padding: 20px; 
+    margin-top: 20px;
+  }
+
+  .login-container h1 {
+    font-size: 2.2rem; 
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  input[type="email"],
+  input[type="password"] {
+    padding: 12px; 
+    font-size: 1rem; 
+  }
+
+  .login-container button {
+    padding: 15px; 
+    font-size: 1.2rem;
+  }
+
+  .error {
+    font-size: 1rem; 
+  }
+
+  .register-link p {
+    font-size: 1rem; 
+  }
+}
+
+/* Tablet (middelgrote schermen) */
+@media (max-width: 1024px) {
+  .login-container {
+    padding: 30px; 
+  }
+
+  .login-container h1 {
+    font-size: 2.5rem; 
+    margin-bottom: 30px;
+  }
+
+  .form-group {
+    margin-bottom: 25px;
+  }
+
+  input[type="email"],
+  input[type="password"] {
+    padding: 14px;
+    font-size: 1.1rem;
+  }
+
+  .login-container button {
+    padding: 16px;
+    font-size: 1.3rem;
+  }
+
+  .error {
+    font-size: 1.1rem; 
+  }
+
+  .register-link p {
+    font-size: 1.1rem;
+  }
+}
+
+/* Desktop (grote schermen) */
+@media (min-width: 1025px) {
+  .login-container {
+    padding: 50px;
+  }
+
+  .login-container h1 {
+    font-size: 3rem;
+    margin-bottom: 40px;
+  }
+
+  .form-group {
+    margin-bottom: 30px;
+  }
+
+  input[type="email"],
+  input[type="password"] {
+    padding: 15px;
+    font-size: 1.2rem;
+  }
+
+  .login-container button {
+    padding: 18px;
+    font-size: 1.4rem;
+  }
+
+  .error {
+    font-size: 1.2rem;
+  }
+
+  .register-link p {
+    font-size: 1.2rem;
+  }
+}

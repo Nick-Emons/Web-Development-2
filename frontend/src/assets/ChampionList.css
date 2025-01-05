@@ -1,0 +1,306 @@
+/* Basis styling voor de champions-container */
+.champions-container {
+  position: relative;
+  padding: 20px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  background-image: url('/images/smoke.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.champions-title, .champions-grid, .champion-card .champion-search {
+  position: relative;
+}
+
+.champions-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Titel styling */
+.champions-title {
+  text-align: center;
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 40px;
+  flex-shrink: 0;
+}
+
+/* Grid styling voor champions */
+.champions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  max-width: 1500px;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+/* Als er geen champions zijn, maak de grid flexibel */
+.champions-container:empty .champions-grid {
+  display: flex;
+  align-items: center;
+}
+
+/* Champion card styling */
+.champion-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: auto;
+}
+
+/* Hover effect voor champion cards */
+.champion-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.champion-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.champion-name {
+  font-size: 2rem;
+  color: #333;
+  margin: 15px 0 5px;
+}
+
+/* Titel styling voor champion */
+.champion-title {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+/* Beschrijving van champion */
+.champion-blurb {
+  font-size: 1rem;
+  color: #555;
+  flex-grow: 1;
+  margin-bottom: 30px;
+}
+
+/* Favoriet knop styling */
+.favorite-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  padding-bottom: 10px;
+}
+
+.favorite-button {
+  background-color: #ffcc00;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  width: 100%;
+  max-width: 250px;
+  align-self: center;
+  font-weight: bold;
+}
+
+/* Favoriet knop stijl als het een favoriet is */
+.favorite-button.is-favorite {
+  background-color: #ff0000;
+}
+
+/* Hover effect voor favoriet knop */
+.favorite-button:hover {
+  background-color: #e6b800;
+}
+
+.favorite-button.is-favorite:hover {
+  background-color: #cc0000;
+}
+
+.favorite-view-button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  z-index: 10; /* Zorgt ervoor dat de knop boven de overlay komt */
+  position: relative; /* Zorgt ervoor dat de knop in de juiste context staat */
+}
+
+.favorite-view-button:hover {
+  background-color: #45a049;
+}
+
+/* No results tekst */
+.no-results {
+  text-align: center;
+  font-size: 1.4em;
+  color: white;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  font-weight: bold;
+  position: relative;
+}
+
+/* Zoekfunctie styling */
+.champion-search {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  margin: 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  position: relative;
+}
+
+/* Admin en logout buttons */
+.admin-button,
+.logout-button {
+  top: 60px;
+  position: fixed;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.admin-button {
+  left: 50px;
+}
+
+.logout-button {
+  right: 50px;
+}
+
+.admin-link {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.admin-link:hover {
+  background-color: #1eb300;
+}
+
+.logout-button button {
+  background-color: #ff4d4d;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: large;
+}
+
+.logout-button button:hover {
+  background-color: #ff1a1a;
+}
+
+/* Responsieve stijlen */
+
+/* Mobiel (kleine schermen) */
+@media (max-width: 600px) {
+  .champions-title {
+    font-size: 2rem; 
+    margin-bottom: 20px;
+  }
+
+  .champions-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+  }
+
+  .champion-card {
+    padding: 15px; 
+    font-size: 0.9rem;
+  }
+
+  .favorite-button {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+
+  .champion-search {
+    width: 100%;
+    max-width: 300px; 
+    font-size: 14px;
+  }
+}
+
+/* Tablet (middelgrote schermen) */
+@media (max-width: 1024px) {
+  .champions-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
+
+  .champions-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+  }
+
+  .champion-card {
+    padding: 18px;
+    font-size: 1rem;
+  }
+
+  .favorite-button {
+    font-size: 13px;
+    padding: 10px 18px;
+  }
+
+  .champion-search {
+    width: 100%;
+    max-width: 350px;
+    font-size: 15px;
+  }
+}
+
+/* Desktop (grote schermen) */
+@media (min-width: 1025px) {
+  .champions-title {
+    font-size: 3rem;
+    margin-bottom: 40px;
+  }
+
+  .champions-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+  }
+
+  .champion-card {
+    padding: 20px;
+    font-size: 1.2rem;
+  }
+
+  .favorite-button {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .champion-search {
+    max-width: 400px;
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,10 @@
+/* Globale stijlen voor de applicatie */
+
+#app {
+    min-height: 100vh;
+    text-align: center;
+  }
+
+body {
+    margin: 0;
+}
