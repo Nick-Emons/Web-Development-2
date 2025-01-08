@@ -10,7 +10,8 @@ RUN apt-get update && apt-get install -y \
     unzip \
     git \
     curl \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+    libpq-dev \
+    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd pdo_pgsql
 
 # Installeer Composer
 COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
@@ -30,8 +31,24 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 # Zet de Apache DocumentRoot naar de public directory
 RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
 
+# Voeg mod_rewrite toe en configureer de rewrite-regels
+RUN echo '<VirtualHost *:80>\n\
+    DocumentRoot /var/www/html/public\n\
+    <Directory /var/www/html/public>\n\
+        AllowOverride All\n\
+        Require all granted\n\
+    </Directory>\n\
+    RewriteEngine On\n\
+    RewriteCond %{REQUEST_FILENAME} !-f\n\
+    RewriteCond %{REQUEST_FILENAME} !-d\n\
+    RewriteRule ^ /index.html [L]\n\
+</VirtualHost>' > /etc/apache2/sites-available/000-default.conf
+
+# Schakel mod_rewrite in
+RUN a2enmod rewrite
+
 # Expose de juiste poort
 EXPOSE 80
 
-# Stel de startcommand in
+# Start Apache
 CMD ["apache2-foreground"]
