@@ -24,6 +24,9 @@ COPY . .
 # Stel permissies in voor storage en bootstrap/cache
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
+# Zet de Apache DocumentRoot naar de public directory
+RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
+
 # Expose de juiste poort
 EXPOSE 80
 
