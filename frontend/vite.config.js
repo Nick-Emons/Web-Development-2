@@ -6,6 +6,6 @@ export default defineConfig({
   base: '/', // Hier geef je het base pad aan als je frontend in een submap zit
   plugins: [vue()],
   server: {
-    cors: true, // Hiermee staat Vite CORS toe en voegt automatisch 'Access-Control-Allow-Origin: *' toe
+    cors: true, 
   },
 });

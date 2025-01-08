@@ -37,11 +37,14 @@ RUN echo '<VirtualHost *:80>\n\
     <Directory /var/www/html/public>\n\
         AllowOverride All\n\
         Require all granted\n\
+        RewriteEngine On\n\
+        # Sta directe toegang tot statische bestanden toe\n\
+        RewriteCond %{REQUEST_FILENAME} -f [OR]\n\
+        RewriteCond %{REQUEST_FILENAME} -d\n\
+        RewriteRule ^ - [L]\n\
+        # Omleidingen voor SPA-routes\n\
+        RewriteRule ^ /index.html [L]\n\
     </Directory>\n\
-    RewriteEngine On\n\
-    RewriteCond %{REQUEST_FILENAME} !-f\n\
-    RewriteCond %{REQUEST_FILENAME} !-d\n\
-    RewriteRule ^ /index.html [L]\n\
 </VirtualHost>' > /etc/apache2/sites-available/000-default.conf
 
 # Schakel mod_rewrite in
