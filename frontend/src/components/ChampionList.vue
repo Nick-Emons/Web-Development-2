@@ -91,7 +91,7 @@ export default {
       const token = localStorage.getItem('jwt_token');
       if (token) {
         try {
-          const response = await api.get('http://localhost:8000/api/user', {
+          const response = await api.get('/user', {
             headers: { Authorization: `Bearer ${token}` },
           });
           this.user = response.data;
@@ -121,7 +121,7 @@ export default {
       const token = localStorage.getItem('jwt_token');
       if (token) {
         try {
-          const response = await api.get('http://localhost:8000/api/favorites', {
+          const response = await api.get('/favorites', {
             headers: { Authorization: `Bearer ${token}` },
           });
           const userFavorites = response.data.map(favorite => favorite.champion_id);
@@ -154,13 +154,13 @@ export default {
 
       try {
         if (isAlreadyFavorite) {
-          await api.delete(`http://localhost:8000/api/favorites/${championId}`, {
+          await api.delete(`/${championId}`, {
             headers: { Authorization: `Bearer ${token}` },
           });
           champion.isFavorite = false;
         } else {
           await api.post(
-            'http://localhost:8000/api/favorites',
+            '/favorites',
             { champion_id: String(championId) },
             {
               headers: { Authorization: `Bearer ${token}` },

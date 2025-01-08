@@ -26,8 +26,8 @@ api.interceptors.response.use(
       if (refreshToken) {
         try {
           // Verstuur de refresh token naar de backend om een nieuwe access token te verkrijgen
-          const refreshResponse = await axios.post(
-            "http://localhost:8000/api/refresh-token", 
+          const refreshResponse = await api.post(
+            "/refresh-token", 
             { refresh_token: refreshToken }
           );
 
