@@ -50,7 +50,9 @@
             this.errorMessage = "Passwords do not match!";
             return;
           }
-  
+          
+          console.log('Gaat nu registreren');
+
           const response = await api.post('/register', {
             name: this.name,
             email: this.email,

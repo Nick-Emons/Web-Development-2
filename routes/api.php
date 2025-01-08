@@ -7,6 +7,9 @@ use App\Http\Controllers\ChampionController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FavoritesController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Log;
+
+Log::info('Hier komt die ook nog terecht');
 
 Route::get('/champions/import', [ChampionController::class, 'importChampions']);
 
