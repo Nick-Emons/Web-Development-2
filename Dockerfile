@@ -24,6 +24,9 @@ COPY . .
 # Installeer afhankelijkheden via Composer
 RUN composer install --no-dev --optimize-autoloader
 
+# Voer de migraties uit
+RUN php artisan migrate --force
+
 # Stel permissies in voor storage en bootstrap/cache
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
