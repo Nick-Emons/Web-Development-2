@@ -34,5 +34,6 @@ RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available
 # Expose de juiste poort
 EXPOSE 80
 
+# Controleer of de database beschikbaar is voordat de migraties worden uitgevoerd
 # Voer de migraties uit en start Apache
-CMD php artisan migrate --force && apache2-foreground
+ENTRYPOINT ["sh", "-c", "until pg_isready -h $DB_HOST -p 5432; do echo waiting for database; sleep 2; done; php artisan migrate --force; apache2-foreground"]
