@@ -4,7 +4,7 @@ import ChampionDetail from '../components/ChampionDetails.vue';
 import Login from '../components/Login.vue';
 import Register from '../components/Register.vue';
 import AdminCenter from '../components/AdminCenter.vue';
-import axios from 'axios';
+import api from "../utils/axios.js";
 
 const routes = [
   { path: '/', name: 'ChampionList',component: ChampionList,alias: '/champions', meta: { requiresAuth: true } },
@@ -28,7 +28,7 @@ router.beforeEach((to, from, next) => {
       next({ path: '/login' });
     } else {
       // Controleer de token geldigheid en haal gebruikersgegevens op
-      axios.get('http://localhost:8000/api/user', {
+      api.get('/user', {
         headers: { Authorization: `Bearer ${token}` },
       })
         .then(response => {
