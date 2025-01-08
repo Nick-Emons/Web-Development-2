@@ -10,7 +10,8 @@ RUN apt-get update && apt-get install -y \
     unzip \
     git \
     curl \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+    libpq-dev \  # Voeg deze regel toe om PostgreSQL-clientbibliotheken te installeren
+    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd pdo_pgsql  # Voeg pdo_pgsql toe
 
 # Installeer Composer
 COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
