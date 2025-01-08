@@ -6,7 +6,7 @@
     RewriteEngine On
 
     # Handle Authorization Header
-    RewriteCond %{HTTP:Authorization} . 
+    RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
     # Redirect Trailing Slashes If Not A Folder...
@@ -19,7 +19,11 @@
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteRule ^ - [L]
 
-    # Omleiding naar index.html voor SPA-routing
+    # Routeer API-verzoeken naar public/index.php (Laravel backend)
+    RewriteCond %{REQUEST_URI} ^/api/
+    RewriteRule ^ index.php [L]
+
+    # Routeer overige verzoeken naar index.html (Vue frontend)
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^ /index.html [L]
