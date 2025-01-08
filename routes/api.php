@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\ChampionController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FavoritesController;
@@ -35,3 +36,13 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/favorites', [FavoritesController::class, 'index']);  
 });
 Route::middleware('auth:api')->get('/users/{id}/favorites', [FavoritesController::class, 'getUserFavorites']);
+
+Route::get('/run-migrations', function () {
+    // Zorg ervoor dat je alleen in productie de migraties uitvoert
+    if (app()->environment('production')) {
+        Artisan::call('migrate', ['--force' => true]);
+        return response()->json(['status' => 'Migraties uitgevoerd']);
+    }
+
+    return response()->json(['error' => 'Niet toegestaan'], 403);
+});

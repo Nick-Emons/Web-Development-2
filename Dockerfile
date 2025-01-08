@@ -10,8 +10,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     git \
     curl \
-    libpq-dev \  # Voeg deze regel toe om PostgreSQL-clientbibliotheken te installeren
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd pdo_pgsql  # Voeg pdo_pgsql toe
+    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
 # Installeer Composer
 COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
@@ -34,6 +33,5 @@ RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available
 # Expose de juiste poort
 EXPOSE 80
 
-# Controleer of de database beschikbaar is voordat de migraties worden uitgevoerd
-# Voer de migraties uit en start Apache
-ENTRYPOINT ["sh", "-c", "until pg_isready -h $DB_HOST -p 5432; do echo waiting for database; sleep 2; done; php artisan migrate --force; apache2-foreground"]
+# Stel de startcommand in
+CMD ["apache2-foreground"]
