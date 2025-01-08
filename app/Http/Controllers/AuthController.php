@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Services\AuthService;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -29,6 +30,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        Log::info('JWT Secret:', [env('JWT_SECRET')]);
         $credentials = $request->only('email', 'password');
         $response = $this->authService->login($credentials);
 
