@@ -24,9 +24,6 @@ COPY . .
 # Installeer afhankelijkheden via Composer
 RUN composer install --no-dev --optimize-autoloader
 
-# Voer de migraties uit
-RUN php artisan migrate --force
-
 # Stel permissies in voor storage en bootstrap/cache
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
@@ -36,5 +33,5 @@ RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available
 # Expose de juiste poort
 EXPOSE 80
 
-# Stel de startcommand in
-CMD ["apache2-foreground"]
+# Voer de migraties uit en start Apache
+CMD php artisan migrate --force && apache2-foreground
