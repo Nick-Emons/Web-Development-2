@@ -21,6 +21,9 @@ WORKDIR /var/www/html
 # Kopieer projectbestanden
 COPY . .
 
+# Installeer afhankelijkheden via Composer
+RUN composer install --no-dev --optimize-autoloader
+
 # Stel permissies in voor storage en bootstrap/cache
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
