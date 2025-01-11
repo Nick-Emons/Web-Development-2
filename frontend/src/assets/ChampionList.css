@@ -187,7 +187,7 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 .logout-button {
-  top: 55px;
+  top: 60px;
   position: fixed;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -237,8 +237,8 @@
   }
 
   .champions-grid {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));   
-    max-width: 600px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));   
+    max-width: 350px;
   }
 
   .champion-card {
@@ -247,15 +247,27 @@
     max-width: 110px;
   }
 
+  .champion-name {
+    font-size: 1.5rem;
+  }
+
+  .champion-title {
+    font-size: 1rem;
+  }
+
+  .champion-blurb {
+    font-size: 0.9rem;
+  }
+
   .favorite-button {
     font-size: 12px;
-    padding: 6px 14px;
+    padding: 4px 12px;
   }
 
   .champion-search {
     width: 50%;
     max-width: 300px; 
-    font-size: 1.0rem;
+    font-size: 0.7rem;
   }
 
   .favorite-view-button {
@@ -265,10 +277,20 @@
 
   .logout-button button {
     font-size: 0.6rem;
+    padding: 5px;
+  }
+
+  .logout-button {
+    right: 10px;
+  }
+
+  .admin-button {
+    left: 10px;
   }
 
   .admin-link {
     font-size: 0.6rem;
+    padding: 5px;
   }
 }
 
