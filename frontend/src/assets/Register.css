@@ -115,9 +115,9 @@ label {
     margin-bottom: 20px;
   }
 
-  input[type="text"],
-  input[type="email"],
-  input[type="password"] {
+  .form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
     padding: 12px; 
     font-size: 1rem; 
   }
@@ -151,9 +151,9 @@ label {
     margin-bottom: 25px;
   }
 
-  input[type="text"],
-  input[type="email"],
-  input[type="password"] {
+  .form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
     padding: 14px;
     font-size: 1.1rem;
   }
@@ -172,7 +172,7 @@ label {
   }
 }
 
-/* Desktop (grote schermen) */
+/* Laptop  */
 @media (min-width: 1025px) {
   .register-container {
     padding: 50px;
@@ -187,9 +187,45 @@ label {
     margin-bottom: 30px;
   }
 
-  input[type="text"],
-  input[type="email"],
-  input[type="password"] {
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="password"] {
+    padding: 15px;
+    font-size: 1.2rem;
+  }
+
+  .register-container button {
+    padding: 18px;
+    font-size: 1.4rem;
+  }
+
+  .error {
+    font-size: 1.2rem;
+  }
+
+  .login-link p {
+    font-size: 1.2rem;
+  }
+}
+
+/* Desktop (grote schermen) */
+@media (min-width: 1600px) {
+  .register-container {
+    padding: 50px;
+  }
+
+  .register-container h1 {
+    font-size: 3rem;
+    margin-bottom: 40px;
+  }
+
+  .form-group {
+    margin-bottom: 30px;
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="password"] {
     padding: 15px;
     font-size: 1.2rem;
   }
