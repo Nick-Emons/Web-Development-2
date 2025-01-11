@@ -181,9 +181,13 @@
 }
 
 /* Admin en logout buttons */
-.admin-button,
-.logout-button {
+.admin-button {
   top: 60px;
+  position: fixed;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.logout-button {
+  top: 55px;
   position: fixed;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -318,7 +322,7 @@
 }
 
 /* Laptop  */
-@media (min-width: 1250) {
+@media (min-width: 1250px) {
   .champions-title {
     font-size: 3rem;
     margin-bottom: 40px;

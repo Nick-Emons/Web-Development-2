@@ -372,7 +372,7 @@
 }
 
 /* Tablet (middelgrote schermen) */
-@media (max-width: 1024px) {
+@media (max-width: 1250px) {
   .container {
     flex-direction: column;
     height: auto;
