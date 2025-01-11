@@ -77,7 +77,6 @@
 
       <!-- Skins tab -->
       <div class="left-panel" :class="{ skins: selectedTab === 'Skins' }" v-if="selectedTab === 'Skins'">
-        <h3 class="section-title">Skins</h3>
         <div class="skin-cards-container">
           <!-- Loop through the skins and create a card for each -->
           <div v-for="skin in skins" :key="skin.id" class="skin-card" @click="selectSkin(skin)"
