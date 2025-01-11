@@ -1,6 +1,6 @@
 /* Basis registratie container styling */
 .register-container {
-  max-width: 600px;
+  max-width: 500px;
   margin: 50px auto 0;
   padding: 50px;
   background-color: #f4f7fc;
@@ -137,7 +137,7 @@ label {
 }
 
 /* Tablet (middelgrote schermen) */
-@media (max-width: 1024px) {
+@media (min-width: 600px) and (max-width: 1250px) {
   .register-container {
     padding: 30px; 
   }
@@ -173,7 +173,7 @@ label {
 }
 
 /* Laptop  */
-@media (min-width: 1025px) {
+@media (min-width: 1250px) and (max-width: 1600px) {
   .register-container {
     padding: 50px;
   }

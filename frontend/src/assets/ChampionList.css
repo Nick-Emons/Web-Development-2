@@ -273,7 +273,7 @@
 }
 
 /* Tablet (middelgrote schermen) */
-@media (max-width: 1024px) {
+@media (min-width: 600px) and (max-width: 1250px) {
   .champions-title {
     font-size: 2.3rem;
     margin-bottom: 30px;
@@ -322,7 +322,7 @@
 }
 
 /* Laptop  */
-@media (min-width: 1250px) {
+@media (min-width: 1250px) and (max-width: 1600px) {
   .champions-title {
     font-size: 3rem;
     margin-bottom: 40px;

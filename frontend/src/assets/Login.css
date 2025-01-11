@@ -1,6 +1,6 @@
 /* Basis login container styling */
 .login-container {
-  max-width: 600px;
+  max-width: 500px;
   margin: 50px auto 0;
   padding: 50px;
   background-color: #f4f7fc;
@@ -136,7 +136,7 @@ input[type="password"]:focus {
 }
 
 /* Tablet (middelgrote schermen) */
-@media (max-width: 1024px) {
+@media (min-width: 600px) and (max-width: 1250px) {
   .login-container {
     padding: 30px; 
   }
@@ -171,7 +171,42 @@ input[type="password"]:focus {
 }
 
 /* Desktop (grote schermen) */
-@media (min-width: 1025px) {
+@media (min-width: 1250px) and (max-width: 1600px) {
+  .login-container {
+    padding: 50px;
+  }
+
+  .login-container h1 {
+    font-size: 3rem;
+    margin-bottom: 40px;
+  }
+
+  .form-group {
+    margin-bottom: 30px;
+  }
+
+  input[type="email"],
+  input[type="password"] {
+    padding: 15px;
+    font-size: 1.2rem;
+  }
+
+  .login-container button {
+    padding: 18px;
+    font-size: 1.4rem;
+  }
+
+  .error {
+    font-size: 1.2rem;
+  }
+
+  .register-link p {
+    font-size: 1.2rem;
+  }
+}
+
+/* Desktop (grote schermen) */
+@media (min-width: 1600px) {
   .login-container {
     padding: 50px;
   }
