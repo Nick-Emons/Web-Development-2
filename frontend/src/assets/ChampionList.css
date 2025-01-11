@@ -77,9 +77,11 @@
 }
 
 .champion-image {
-  width: 100%;
+  width: 80%;
   height: auto;
   border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .champion-name {
@@ -168,7 +170,7 @@
 
 /* Zoekfunctie styling */
 .champion-search {
-  width: 100%;
+  width: 50%;
   max-width: 400px;
   padding: 10px;
   margin: 20px 0;
@@ -213,7 +215,7 @@
   padding: 10px 15px;
   border-radius: 5px;
   font-weight: bold;
-  font-size: large;
+  font-size: 1.0rem;
 }
 
 .logout-button button:hover {
@@ -230,40 +232,64 @@
   }
 
   .champions-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));   
+    max-width: 600px;
   }
 
   .champion-card {
     padding: 15px; 
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    max-width: 110px;
   }
 
   .favorite-button {
     font-size: 12px;
-    padding: 8px 16px;
+    padding: 6px 14px;
   }
 
   .champion-search {
-    width: 100%;
+    width: 50%;
     max-width: 300px; 
     font-size: 14px;
+    font-size: 1.0rem;
+  }
+
+  .favorite-view-button {
+    font-size: 0.6rem;
+    padding: 8px 12px;
+  }
+
+  .logout-button button {
+    font-size: 0.6rem;
+  }
+
+  .admin-link {
+    font-size: 0.6rem;
   }
 }
 
 /* Tablet (middelgrote schermen) */
 @media (max-width: 1024px) {
   .champions-title {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     margin-bottom: 30px;
   }
 
   .champions-grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+    max-width: 800px;
   }
 
   .champion-card {
-    padding: 18px;
+    padding: 10px;
     font-size: 1rem;
+    max-width: 145px;
+  }
+
+  .champion-image {
+    width: 80%;
+    height: auto;
+    border-radius: 10px;
   }
 
   .favorite-button {
@@ -272,13 +298,27 @@
   }
 
   .champion-search {
-    width: 100%;
+    width: 50%;
     max-width: 350px;
     font-size: 15px;
+    font-size: 1.0rem;
+  }
+
+  .favorite-view-button {
+    font-size: 0.8rem;
+    padding: 10px 15px;
+  }
+
+  .logout-button button {
+    font-size: 0.8rem;
+  }
+
+  .admin-link {
+    font-size: 0.8rem;
   }
 }
 
-/* Desktop (grote schermen) */
+/* Laptop  */
 @media (min-width: 1025px) {
   .champions-title {
     font-size: 3rem;
@@ -286,11 +326,43 @@
   }
 
   .champions-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    max-width: 1000px;
   }
 
   .champion-card {
-    padding: 20px;
+    padding: 16px;
+    font-size: 1.2rem;
+    max-width: 180px;
+  }
+
+  .favorite-button {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .champion-search {
+    font-size: 1.0rem;
+    width: 50%;
+    max-width: 400px;
+    font-size: 16px;
+  }
+}
+
+/* Desktop (grote schermen) */
+@media (min-width: 1600px) {
+  .champions-title {
+    font-size: 3rem;
+    margin-bottom: 40px;
+  }
+
+  .champions-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    max-width: 1300px;
+  }
+
+  .champion-card {
+    padding: 16px;
     font-size: 1.2rem;
   }
 
@@ -300,6 +372,8 @@
   }
 
   .champion-search {
+    font-size: 1.0rem;
+    width: 50%;
     max-width: 400px;
     font-size: 16px;
   }

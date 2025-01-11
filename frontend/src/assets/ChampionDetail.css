@@ -78,7 +78,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 35px;
+  font-size: 1.5rem;
   margin-top: 60px;
 }
 
@@ -174,7 +174,7 @@
   border: 1px solid #ccc;
   padding: 20px 40px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 1rem;
   border-radius: 10px;
   width: 175px;
 }
@@ -190,7 +190,7 @@
   padding: 0;
   margin: 10px 0;
   text-align: left;
-  font-size: 20px;
+  font-size: 1rem;
 }
 
 .champion-overview li {
@@ -200,7 +200,7 @@
 .lore {
   margin: 20px 0;
   max-width: 500px;
-  font-size: 20px;
+  font-size: 1rem;
 }
 
 .lore h3 {
@@ -264,27 +264,26 @@
 }
 
 .ability-description {
-  margin-top: 30px;
   padding: 20px;
   font-size: 1.5em;
-  line-height: 1.6;
   color: white;
   background-color: rgba(0, 0, 0, 0.7);
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.ability-description h3 {
+  margin-top: 30px;
 }
 
 .selected-ability-image {
-  width: 250px;
+  width: 200px;
   height: auto;
   margin-bottom: 10px;
-  display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
 .section-title {
-  font-size: 2em;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #4CAF50;
   margin: 20px 0;
@@ -333,13 +332,17 @@
     align-items: flex-start;
   }
 
+  .section-title {
+    font-size: 1rem;
+  }
+
   .spells-container {
     padding: 15px;
   }
 
   .spell-card {
-    width: 120px;
-    font-size: 1em;
+    width: 80px;
+    font-size: 0.7em;
   }
 
   .tabs button {
@@ -383,14 +386,18 @@
     font-size: 28px;
   }
 
+  .section-title {
+    font-size: 1.2rem;
+  }
+
   .spell-card {
-    width: 140px;
-    font-size: 1.1em;
+    width: 100px;
+    font-size: 0.9em;
   }
 
   .tabs button {
     font-size: 16px;
-    padding: 15px 30px;
+    padding: 12px 22px;
   }
 
   .skin-card {
@@ -414,17 +421,21 @@
   }
 
   .name-title {
-    font-size: 35px;
+    font-size: 1.0rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
   }
 
   .spell-card {
-    width: 150px;
-    font-size: 1.2em;
+    width: 120px;
+    font-size: 1.1em;
   }
 
   .tabs button {
     font-size: 18px;
-    padding: 18px 36px;
+    padding: 14px 28px;
   }
 
   .skin-card {
@@ -432,6 +443,28 @@
   }
 
   .selected-ability-image {
-    width: 250px;
+    width: 150px;
   }
+}
+
+/* Desktop (grote schermen) */
+@media (min-width: 1600px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .left-panel,
+  .right-panel {
+    margin-bottom: 0;
+  }
+
+  .spell-card {
+    width: 150px;
+    font-size: 1.2em;
+  }
+
+  .skin-card {
+    width: 120px;
+  }
+
 }

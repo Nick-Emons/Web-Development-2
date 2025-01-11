@@ -47,7 +47,6 @@
       <!-- Full screen content for Abilities Tab -->
       <div v-if="selectedTab === 'Abilities'" class="full-screen">
         <div class="spells-container">
-          <h3 class="section-title">Abilities</h3>
           <div class="spell-cards">
             <!-- Passive Card -->
             <div class="spell-card" @click="handleClick(champion.details.passive)"
@@ -109,32 +108,29 @@ export default {
   data() {
     return {
       champion: null,
-      selectedTab: 'Overview', // Default tab is 'Overview'
-      selectedAbility: null, // Default selected ability is null
-      abilityDescription: '', // Property to store the description of the selected ability
-      selectedSkin: null, // Property to track the selected skin
+      selectedTab: 'Overview', 
+      selectedAbility: null, 
+      abilityDescription: '', 
+      selectedSkin: null, 
     };
   },
   computed: {
-    // Computed property om HTML-tags uit de description te verwijderen
     cleanedAbilityDescription() {
-      return this.abilityDescription.replace(/<[^>]*>/g, ''); // Verwijder HTML-tags
+      return this.abilityDescription.replace(/<[^>]*>/g, ''); 
     },
     selectedAbilityImageUrl() {
-    if (!this.selectedAbility) return ''; // Controleer of er een ability is geselecteerd
+    if (!this.selectedAbility) return ''; 
     if (this.selectedAbility.image.full) {
-      // Controleer of het een passive is
       if (this.selectedAbility === this.champion.details.passive) {
         return `https://ddragon.leagueoflegends.com/cdn/12.14.1/img/passive/${this.selectedAbility.image.full}`;
       }
-      // Anders wordt het een spell
       return `https://ddragon.leagueoflegends.com/cdn/12.14.1/img/spell/${this.selectedAbility.image.full}`;
     }
-    return ''; // Fallback als er geen image beschikbaar is
+    return ''; 
   }
   },
   mounted() {
-    this.fetchChampionDetails(); // Fetch champion details when the component is mounted
+    this.fetchChampionDetails(); 
   },
   methods: {
     async fetchChampionDetails() {
@@ -142,11 +138,11 @@ export default {
       try {
         const response = await api.get(`/champions/${championId}`);
         this.champion = response.data;
-        this.skins = this.champion.details.skins; // Vul de skins data in
+        this.skins = this.champion.details.skins; 
         this.abilityDescription = this.champion.details.passive.description;
-        // Stel de eerste skin in als de standaard geselecteerde skin
+ 
         if (this.skins.length > 0) {
-          this.selectedSkin = this.skins[0]; // Dit stelt de eerste skin als default in
+          this.selectedSkin = this.skins[0]; 
         }
       } catch (error) {
         console.error("Error fetching champion details:", error);
@@ -154,15 +150,15 @@ export default {
       }
     },
     handleClick(ability) {
-      this.selectedAbility = ability; // Update the selected ability on click
-      // Update ability description based on the selected ability
+      this.selectedAbility = ability; 
+
       this.abilityDescription = ability.description || this.champion.details.passive.description;
     },
     selectSkin(skin) {
       this.selectedSkin = skin;
     },
     goBack() {
-    this.$router.push('/champions'); // Replace `/champions` with your actual route
+    this.$router.push('/champions'); 
   },
   },
 };
