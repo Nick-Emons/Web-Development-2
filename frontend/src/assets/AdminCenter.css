@@ -60,9 +60,7 @@
     background-color: #f4f4f4;
 }
 
-.user-table td {
-    max-width: 150px;
-}
+
 
 .user-table td button {
     width: auto;
@@ -75,15 +73,7 @@
     font-size: 1rem;
 }
 
-.user-table td:nth-child(4),
-.user-table th:nth-child(4) {
-    width: 150px;
-}
 
-.user-table td:nth-child(5),
-.user-table th:nth-child(5) {
-    width: 250px;
-}
 
 .logged-in-user {
     background-color: #d4edda;
@@ -148,20 +138,7 @@
     background-color: #ff4f3a;
 }
 
-.favorites-table td:nth-child(1),
-.favorites-table th:nth-child(1) {
-    width: 150px;
-}
 
-.favorites-table td:nth-child(2),
-.favorites-table th:nth-child(2) {
-    width: 250px;
-}
-
-.favorites-table td:nth-child(3),
-.favorites-table th:nth-child(3) {
-    width: 400px;
-}
 
 .champion-image-admin {
     width: 100px;
@@ -209,7 +186,7 @@
 
     .header-admin h1 {
         font-size: 20px;
-        margin-top: 70px;
+        margin-top: 75px;
     }
 
     .header-admin p, .admin-center p {
@@ -271,13 +248,7 @@
         width: 90%;
     }
 
-    .user-table td input,
-    .user-table td select,
-    .favorites-table td input,
-    .favorites-table td select {
-        font-size: 16px;
-        width: 100%;
-    }
+    
 
     .champion-image-admin {
         width: 80px;
@@ -290,42 +261,6 @@
     }
 }
 
-/* Laptop  */
-@media (min-width: 1250px) and (max-width: 1600px) {
-    .user-table,
-    .favorites-table {
-        width: 70%; 
-    }
 
-    .user-table td:nth-child(1),
-    .user-table td:nth-child(2),
-    .favorites-table td:nth-child(1),
-    .favorites-table td:nth-child(2) {
-        width: 200px; 
-    }
 
-    .favorites-table td:nth-child(3),
-    .favorites-table th:nth-child(3) {
-        width: 300px; 
-    }
-}
 
-/* Grote Schermen (desktop en groter) */
-@media (min-width: 1600px) {
-    .user-table,
-    .favorites-table {
-        width: 70%; 
-    }
-
-    .user-table td:nth-child(1),
-    .user-table td:nth-child(2),
-    .favorites-table td:nth-child(1),
-    .favorites-table td:nth-child(2) {
-        width: 200px; 
-    }
-
-    .favorites-table td:nth-child(3),
-    .favorites-table th:nth-child(3) {
-        width: 300px; 
-    }
-}
