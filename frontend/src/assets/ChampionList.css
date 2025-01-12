@@ -114,7 +114,7 @@
 }
 
 .favorite-button {
-  background-color: #ffcc00;
+  background-color: gray;
   border: none;
   color: white;
   padding: 10px 20px;
@@ -183,12 +183,12 @@
 /* Admin en logout buttons */
 .admin-button {
   top: 60px;
-  position: fixed;
+  position: absolute;
   font-family: Arial, Helvetica, sans-serif;
 }
 .logout-button {
   top: 60px;
-  position: fixed;
+  position: absolute;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -239,6 +239,7 @@
   .champions-grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));   
     max-width: 350px;
+    gap: 5px;
   }
 
   .champion-card {
@@ -281,7 +282,7 @@
   }
 
   .logout-button {
-    right: 10px;
+    right: 25px;
   }
 
   .admin-button {

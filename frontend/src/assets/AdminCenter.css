@@ -43,7 +43,7 @@
     width: 70%;
     margin: 20px auto;
     border-collapse: collapse;
-    font-size: 20px;
+    font-size: 1rem;
 }
 
 .user-table th,
@@ -72,7 +72,7 @@
 .user-table td select {
     width: 80%;
     box-sizing: border-box;
-    font-size: 20px;
+    font-size: 1rem;
 }
 
 .user-table td:nth-child(4),
@@ -93,12 +93,12 @@
 .admin-center button {
     background-color: #4CAF50;
     color: white;
-    padding: 10px 15px;
+    padding: 8px 12px;
     border: none;
     border-radius: 3px;
     cursor: pointer;
     margin-right: 15px;
-    font-size: 16px;
+    font-size: 0.8rem;
 }
 
 .admin-center button:hover {
@@ -202,13 +202,14 @@
 /* Media Queries voor Responsiviteit */
 
 /* Kleine Schermen (mobiel) */
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     .admin-center {
         padding: 8px;
     }
 
     .header-admin h1 {
         font-size: 20px;
+        margin-top: 70px;
     }
 
     .header-admin p, .admin-center p {
@@ -223,18 +224,26 @@
     .admin-center button {
         font-size: 12px;
         padding: 6px 10px;
+        margin-right: 5px;
+    }
+
+    .user-table th, .user-table td {
+        padding: 4px 8px;
+
     }
 
     .user-table, .favorites-table {
         width: 100%;
+        font-size: 0.8rem;
     }
 
     .user-table td input,
     .user-table td select,
     .favorites-table td input,
     .favorites-table td select {
-        font-size: 14px;
+        font-size: 0.8rem;
         width: 100%;
+        padding: 4px 8px;
     }
 
     .champion-image-admin {
@@ -253,7 +262,7 @@
 }
 
 /* Middelgrote Schermen (tablets) */
-@media (max-width: 768px) {
+@media (min-width: 600px) and (max-width: 1250px) {
     .admin-center {
         padding: 16px;
     }
@@ -281,8 +290,28 @@
     }
 }
 
+/* Laptop  */
+@media (min-width: 1250px) and (max-width: 1600px) {
+    .user-table,
+    .favorites-table {
+        width: 70%; 
+    }
+
+    .user-table td:nth-child(1),
+    .user-table td:nth-child(2),
+    .favorites-table td:nth-child(1),
+    .favorites-table td:nth-child(2) {
+        width: 200px; 
+    }
+
+    .favorites-table td:nth-child(3),
+    .favorites-table th:nth-child(3) {
+        width: 300px; 
+    }
+}
+
 /* Grote Schermen (desktop en groter) */
-@media (min-width: 1024px) {
+@media (min-width: 1600px) {
     .user-table,
     .favorites-table {
         width: 70%; 
