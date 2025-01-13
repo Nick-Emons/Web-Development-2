@@ -83,7 +83,7 @@
 
             </td>
             <td><span @click="goToChampionDetail(favorite.champion.id)" class="champion-name-admin"> {{
-              favorite.champion.name }}</span></td> <!-- Assuming the champion data is nested -->
+              favorite.champion.name }}</span></td> 
             <td>{{ favorite.champion.title }}</td>
           </tr>
         </tbody>

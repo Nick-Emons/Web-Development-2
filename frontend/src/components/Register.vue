@@ -51,15 +51,11 @@
             return;
           }
           
-          console.log('Gaat nu registreren');
-
           const response = await api.post('/register', {
             name: this.name,
             email: this.email,
             password: this.password
           });
-  
-          console.log('Registration successful:', response);
   
           // Redirect naar de loginpagina na een succesvolle registratie
           this.$router.push('/login');

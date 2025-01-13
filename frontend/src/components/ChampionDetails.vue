@@ -2,14 +2,12 @@
   <div class="champion-detail" v-if="champion">
     <button class="return-button" @click="goBack">← Back to Champions List</button>
     <div class="container">
-      <!-- Tabs at the top, binnen de container -->
       <div class="tabs">
         <button :class="{ active: selectedTab === 'Overview' }" @click="selectedTab = 'Overview'">Overview</button>
         <button :class="{ active: selectedTab === 'Abilities' }" @click="selectedTab = 'Abilities'">Abilities</button>
         <button :class="{ active: selectedTab === 'Skins' }" @click="selectedTab = 'Skins'">Skins</button>
       </div>
 
-      <!-- Conditionally render left and right panel only for 'Overview' tab -->
       <div class="left-panel" v-if="selectedTab === 'Overview'">
         <div class="header">
           <div class="name-title">
@@ -41,7 +39,6 @@
       <div class="right-panel"
         :style="{ backgroundImage: `url(https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.details.id}_0.jpg)` }"
         v-if="selectedTab === 'Overview'">
-        <!-- Background image for the splash art -->
       </div>
 
       <!-- Full screen content for Abilities Tab -->
@@ -78,7 +75,6 @@
       <!-- Skins tab -->
       <div class="left-panel" :class="{ skins: selectedTab === 'Skins' }" v-if="selectedTab === 'Skins'">
         <div class="skin-cards-container">
-          <!-- Loop through the skins and create a card for each -->
           <div v-for="skin in skins" :key="skin.id" class="skin-card" @click="selectSkin(skin)"
             :class="{ active: selectedSkin === skin }">
             <img
@@ -93,7 +89,6 @@
       <div class="right-panel" :class="{ skins: selectedTab === 'Skins' }"
         :style="{ backgroundImage: `url(https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.details.id}_${selectedSkin ? selectedSkin.num : 0}.jpg)` }"
         v-if="selectedTab === 'Skins'">
-        <!-- Background image for the selected skin -->
       </div>
     </div>
   </div>

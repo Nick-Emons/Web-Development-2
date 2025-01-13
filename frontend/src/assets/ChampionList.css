@@ -90,14 +90,12 @@
   margin: 15px 0 5px;
 }
 
-/* Titel styling voor champion */
 .champion-title {
   font-size: 1.2rem;
   color: #666;
   margin-bottom: 10px;
 }
 
-/* Beschrijving van champion */
 .champion-blurb {
   font-size: 1rem;
   color: #555;
@@ -105,7 +103,6 @@
   margin-bottom: 30px;
 }
 
-/* Favoriet knop styling */
 .favorite-button-wrapper {
   display: flex;
   justify-content: center;
@@ -126,12 +123,10 @@
   font-weight: bold;
 }
 
-/* Favoriet knop stijl als het een favoriet is */
 .favorite-button.is-favorite {
   background-color: #ff0000;
 }
 
-/* Hover effect voor favoriet knop */
 .favorite-button:hover {
   background-color: #e6b800;
 }
@@ -149,15 +144,14 @@
   font-size: 1rem;
   cursor: pointer;
   margin-bottom: 20px;
-  z-index: 10; /* Zorgt ervoor dat de knop boven de overlay komt */
-  position: relative; /* Zorgt ervoor dat de knop in de juiste context staat */
+  z-index: 10; 
+  position: relative; 
 }
 
 .favorite-view-button:hover {
   background-color: #45a049;
 }
 
-/* No results tekst */
 .no-results {
   text-align: center;
   font-size: 1.4em;
@@ -168,7 +162,6 @@
   position: relative;
 }
 
-/* Zoekfunctie styling */
 .champion-search {
   width: 50%;
   max-width: 400px;
@@ -180,7 +173,6 @@
   position: relative;
 }
 
-/* Admin en logout buttons */
 .admin-button {
   top: 60px;
   position: absolute;

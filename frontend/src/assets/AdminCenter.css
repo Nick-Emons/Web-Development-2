@@ -121,10 +121,6 @@
     background-color: #f4f4f4;
 }
 
-.favorites-table td {
-    max-width: 200px;
-}
-
 .favorites-table button {
     background-color: #ff6f61;
     color: white;
@@ -229,7 +225,7 @@
     }
 
     .champion-name-admin {
-        font-size: 10px;
+        font-size: 0.8rem;
     }
 
     .back-to-user-list-btn-admin {

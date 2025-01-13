@@ -1,6 +1,6 @@
-import { createApp } from 'vue'; // Importeer Vue
-import App from './App.vue'; // Je hoofdcomponent
-import router from './router'; // Importeer de router
+import { createApp } from 'vue'; 
+import App from './App.vue'; 
+import router from './router'; 
 
 const app = createApp(App);
 

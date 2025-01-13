@@ -3,7 +3,7 @@
 Deze applicatie is een platform voor het beheren van League of Legends-champions en het personaliseren van favorieten door gebruikers. Het biedt zowel een gebruikersinterface als een admin dashboard om de gebruikerservaring te beheren.
 
 ## Link naar website
-
+https://web-development-2-opdracht.onrender.com/
 
 ## Beschikbare accounts
 E-mail:     admin@account.com
@@ -50,12 +50,12 @@ Wachtwoord: Test123
 - Gevoelige routes zijn beveiligd met middelware die JWT-tokens valideert.
 - Externe API-aanroepen worden alleen gedaan als dat nodig is, door het opslaan van de data. 
     
-
 ## Hoe de code is gestructureerd:
 
 - **app/**: Bevat de backend logica, zoals controllers, modellen, services en middleware.
 - **frontend/src/components**: De frontend-templates worden hier bewaard.
-- **routes/api.php**: Hier worden alle routes van de applicatie gedefinieerd.
+- **frontend/src/router/index.js**: Hier worden alle frontend routes, inclusief route guard gedefineerd.
+- **routes/api.php**: Hier worden alle api routes van de applicatie gedefinieerd.
 - **database/migrations/**: Hier vind je de migraties voor het opzetten van de database. (Let op: De database is al ingesteld en gevuld op de gehoste server.)
 
 ## CSS Framework
@@ -101,54 +101,102 @@ Bij elke API aanroep in de service laag, worden error messages gegeven, mits de 
 ### Pagination
 Ik heb binnen de applicatie geen gebruik gemaakt van pagination, omdat ik vind dat de champion lijst door middel van filteren en favorieten toevoegen/verwijderen nog steeds overzichtelijk is en uit eigen ervaring weet ik dat er niet zomaar 20 nieuwe champions bij komen, waardoor de pagina mogelijk te vol wordt. Een nieuwe champion komt geleidelijk over een tijd van maanden. 
 
- In de frontend kan de zoekfunctie, die in Vue is geïmplementeerd, worden beschouwd als een client-side filtering. Deze zoekfunctie filtert de lijst van champions op basis van de zoekterm die de gebruiker invoert.
+In de frontend kan de zoekfunctie, die in Vue is geïmplementeerd, worden beschouwd als een client-side filtering. Deze zoekfunctie filtert de lijst van champions op basis van de zoekterm die de gebruiker invoert.
 
 ## Authentication
 De applicatie maakt gebruik van Role Based Access Control. Bij het registreren van een gebruiker wordt er een rol toegewezen. Als er nog geen gebruiker in de database aanwezig is, wordt de eerste gebruiker in dit geval automatisch Admin. De rest krijg de User role. Gebruikers met de role Admin hebben een eigen CMS, waarbij zij alle geregistreerde gebruikers kunnen zien. Hierbij kunnen zij andere gebruikers hun role aanpassen naar Admin of terug naar User. De ingelogde user kan zijn eigen Admin role niet aanpassen. Door middel van middleware zijn specifieke routes beperkt op basis van een role. Op deze manier hebben gebruikers met de Admin role, meer mogelijkheden binnen de applicatie, dan gebruikers met de standaard User role. Binnen de **register** functie binnen de **app/Http/Services/AuthService** file, kan worden gezien dat de role wordt toegewezen. In de **app/Models/User** file kan je zien dat **role** een eigenschap is van een user. In de **frontend/src/router/index.js** kan je zien dat de /admin route de eigenschap **requiresAdmin** heeft. Verder in dezelfde file zie je hoe dit gecontroleerd wordt.
 
 ## SQL-creatie script
--- Create the database (adjust the database name as needed)
-CREATE DATABASE IF NOT EXISTS `league_of_legends` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+-- --------------------------------------------------------
+-- Database: league_of_legends
+-- --------------------------------------------------------
+CREATE DATABASE IF NOT EXISTS league_of_legends 
+DEFAULT CHARACTER SET utf8mb4 
+COLLATE utf8mb4_general_ci;
+USE league_of_legends;
 
--- Use the newly created database
-USE `league_of_legends`;
+-- --------------------------------------------------------
+-- Table: users
+-- --------------------------------------------------------
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+  id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  name varchar(255) NOT NULL,
+  email varchar(255) NOT NULL UNIQUE,
+  password varchar(255) NOT NULL,
+  created_at timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  role varchar(255) NOT NULL DEFAULT 'user',
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Create 'users' table
-CREATE TABLE `users` (
-    `id` BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    `name` VARCHAR(255) NOT NULL,
-    `email` VARCHAR(255) NOT NULL UNIQUE,
-    `password` VARCHAR(255) NOT NULL,
-    `created_at` TIMESTAMP NULL DEFAULT NULL,
-    `updated_at` TIMESTAMP NULL DEFAULT NULL
-);
+-- --------------------------------------------------------
+-- Table: champions
+-- --------------------------------------------------------
+DROP TABLE IF EXISTS champions;
+CREATE TABLE champions (
+  id varchar(255) NOT NULL,
+  name varchar(255) NOT NULL,
+  title varchar(255) NOT NULL,
+  blurb text NOT NULL,
+  image varchar(255) NOT NULL,
+  lore text DEFAULT NULL,
+  tags JSON DEFAULT NULL,
+  info JSON DEFAULT NULL,
+  stats JSON DEFAULT NULL,
+  spells JSON DEFAULT NULL,
+  passive JSON DEFAULT NULL,
+  skins JSON DEFAULT NULL,
+  created_at timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Create 'champions' table
-CREATE TABLE `champions` (
-    `id` VARCHAR(255) PRIMARY KEY,
-    `name` VARCHAR(255) NOT NULL,
-    `title` VARCHAR(255) NOT NULL,
-    `blurb` TEXT NOT NULL,
-    `image` VARCHAR(255) NOT NULL,
-    `lore` TEXT DEFAULT NULL,
-    `tags` JSON DEFAULT NULL,
-    `info` JSON DEFAULT NULL,
-    `stats` JSON DEFAULT NULL,
-    `spells` JSON DEFAULT NULL,
-    `passive` JSON DEFAULT NULL,
-    `skins` JSON DEFAULT NULL,
-    `created_at` TIMESTAMP NULL DEFAULT NULL,
-    `updated_at` TIMESTAMP NULL DEFAULT NULL
-);
+-- --------------------------------------------------------
+-- Table: favorites
+-- --------------------------------------------------------
+DROP TABLE IF EXISTS favorites;
+CREATE TABLE favorites (
+  id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  user_id bigint(20) UNSIGNED NOT NULL,
+  champion_id varchar(255) NOT NULL,
+  created_at timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY favorites_user_id_champion_id_unique (user_id, champion_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Create 'favorites' table
-CREATE TABLE `favorites` (
-    `id` BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    `user_id` BIGINT UNSIGNED NOT NULL,
-    `champion_id` VARCHAR(255) NOT NULL,
-    `created_at` TIMESTAMP NULL DEFAULT NULL,
-    `updated_at` TIMESTAMP NULL DEFAULT NULL,
-    UNIQUE KEY `unique_favorite` (`user_id`, `champion_id`),
-    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE,
-    FOREIGN KEY (`champion_id`) REFERENCES `champions`(`id`) ON DELETE CASCADE
-);
+-- --------------------------------------------------------
+-- Table: migrations
+-- --------------------------------------------------------
+DROP TABLE IF EXISTS migrations;
+CREATE TABLE migrations (
+  id int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  migration varchar(255) NOT NULL,
+  batch int(11) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+-- Add Constraints for Table: favorites
+-- --------------------------------------------------------
+ALTER TABLE favorites
+  ADD CONSTRAINT favorites_champion_id_foreign FOREIGN KEY (champion_id) REFERENCES champions (id) ON DELETE CASCADE,
+  ADD CONSTRAINT favorites_user_id_foreign FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE;
+
+-- --------------------------------------------------------
+-- Constraints and Auto-Increment Adjustments
+-- --------------------------------------------------------
+ALTER TABLE users
+  MODIFY id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE champions
+  ADD PRIMARY KEY (id);
+
+ALTER TABLE favorites
+  MODIFY id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE migrations
+  MODIFY id int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+COMMIT;

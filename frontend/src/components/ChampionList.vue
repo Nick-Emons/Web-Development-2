@@ -12,7 +12,6 @@
 
     <h1 class="champions-title">Champions</h1>
 
-    <!-- Toggle button for showing favorites only -->
     <button @click="toggleFavoriteView" class="favorite-view-button">
       {{ showFavoritesOnly ? 'Show All Champions' : 'Show Favorites' }}
     </button>
@@ -53,7 +52,7 @@ export default {
       searchQuery: '',
       user: null,
       errorMessage: '',
-      showFavoritesOnly: false,  // New state to toggle favorites view
+      showFavoritesOnly: false,  
     };
   },
   mounted() {
